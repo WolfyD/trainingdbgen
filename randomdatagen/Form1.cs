@@ -14,6 +14,28 @@ namespace randomdatagen
 	public partial class Form1 : Form
 	{
 		List<int> tanárok = new List<int>() { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+		string[] tables = new string[] {
+			"terem_allapot_ref",
+			"magaviselet_tipus",
+			"csaladtagok",
+			"naplo_bejegyzesek",
+			"osztalytermek",
+			"uzenetek",
+			"tanarok",
+			"diakok",
+			"osztalyok"
+		};
+		Dictionary<string, string> columns = new Dictionary<string, string>() {
+			{"terem_allapot_ref"    ,"id,megnevezes,leiras"},
+			{"magaviselet_tipus"    ,"id,megnevezes,leiras"},
+			{"csaladtagok"          ,"id,diak,nev,kapcsolat"},
+			{"naplo_bejegyzesek"    ,"id,ora,tanar,diak,jegy,megjegyzes"},
+			{"osztalytermek"        ,"id,emelet,ajto,allapot,megjegyzes"},
+			{"uzenetek"             ,"id,tanar,diak,uzenet"},
+			{"tanarok"              ,"id,nev,nem,osztaly_fonok,megjegyzes"},
+			{"diakok"               ,"id,nev,csalad_nev,uto_nev,szuletesi_nev,nem,anyja_neve,szuletesi_datum,szuletesi_hely,szig_szam,osztaly,magaviselet,megjegyzes"},
+			{"osztalyok"            ,"id,osztaly_fonok,osztaly_terem,megjegyzes"}
+		};
 
 		string[] uzenetek = new string[] { "Órán pékáruval dobálta társát. Megintem.", "Órán társa hátára minősíthetetlen feliratot ragasztott.", "Szünetben a fűtőtesten ült", "Órán bámulta a plafont.", "Körzőjével veszélyeztette társai testi épségét", "A gyerek az órán beszél, és állandóan jelentkezik", "A gyerek a szünetben az iskola keretein kívül játszott", "Tisztelt szülők! Fiuk az ebédlőben nemi szervét étkezési célokra ajánlotta fel, ezért megintem.", "Modortalan viselkedéséért megintem (A helyettesítőtanárt meglátva hangos öklendezésbe kezdett.)", "Órán rendetlen voltam, tiszteletlenül beszéltem", "Elkobozta társa tízóraiját", "Kedves Szülő! Csúnya beszédért osztályfőnöki figyelmeztetésben részesítem!", "T. Szülők! A tanórára gyíkot hozott be az udvarról, ami a tanteremben 'kiszabadult' a táskájából! Kérném elbeszélgetni a gyermekkel! [Ezzel ugyanis az órát zavarta]", "Tisztelt Szülők! Fiúk német órán több alkalommal hozzáért a tanárnőhöz és erotikus megjegyzéseket tett. Ezért osztályfőnöki rovóban részesítem. Kérem beszélgessenek el vele erről és értessék meg vele, hogy ne fogdossa a tanárnőt", "Tisztelt szülők! Fiuk az órákon rendszeresen gusztustalankodik, és kulturálatlan viselkedését hőstettként éli meg, holott zavarja társait, az órát. Kérem figyelmeztessék a közösségi élet általános szabályaira, mert ennek hiányában nem méltó az iskolánkhoz.", "Tisztelt Szülők! Lányuk az utcasarkon egy szál pólóban cigizik. Meg fog fázni.", "Az osztályfőnöki dicséretet még mindig nem íratta alá. Megintem.", "Kémia órán a kísérleti anyagot elfogyasztotta.", "Gyermeke az órámon írószer nélkül akart írni.", "Kémiaóra folyamán padtársával zümmögött és brummogott.", "Gyermekük óra alatt orvul elfogyasztotta padtársa uzsonnáját.", "Két ellenőrzője van. Én mosom kezeimet. – Osztályfőnök.", "Fia olvashatatlanul ír. Bár párszor még így jár jobban.", "Kesztyűben ül az órán, mert fázik a keze és nem írja a szavakat.", "Óra alatt kukorékolt!", "A gyerek a szünetben az iskola keretein kívül játszott.", "A gyerek az órán beszél, és állandóan jelentkezik.", "Körzőjével veszélyeztette társai testi épségét", "Elkobozta társa tízóraiját", "Fia óra alatt a pad sarkával jéghokisat játszott a terem körül, eközben MÁV bemondásokat tartott, melyben a rólam elnevezett szerelvény közeledtére figyelmeztetett", "Kedves szülő, ha megígéri, hogy nem hiszi el mindazt amit a fia az iskoláról mesél, én cserébe nem hiszem el mindazt, amit ő az otthoni eseményekről mond.", "Gyermekük matekórán a zsiráf hangját utánozta.", "Szellemessége és feltűnési viszketegsége a pofátlanság határait súrolja.", "Fia a szünetben sztrájkot szervezett. Letörtük.", "Nem elég, hogy a szünetekben állandóan krétacsatákat vív osztálytársaival, ráadásul mindig veszít.", "Tűvel látta el barátait, hogy osztálytársait szurkálják.", "Gyermeke azt mondta, hogy szerinte jó gondolat lenne az egyik osztálytársát bántalmazni, ezért figyelmeztetem.", "T. Szülő, a gyereke állandóan tőlem kér tollat. Lássa el otthon írószerrel.", "Tájékoztatom, hogy gyerekének egy ideje átható kénszaga van." };
 
@@ -354,6 +376,169 @@ INSERT INTO nemek (id,nem) VALUES (2, 'Nő');";
 		{
 			Clipboard.SetText(richTextBox1.Text);
 			lbl_info.Text = "Generated data copied to clipboard!";
+		}
+
+		private void btn_OpenClose_Click(object sender, EventArgs e)
+		{
+			if(richTextBox1.Right >= Width - 30)
+			{
+				richTextBox1.Width = btn_GenTables.Left - richTextBox1.Left;
+				btn_OpenClose.Text = ">";
+			}
+			else
+			{
+				richTextBox1.Width = Width - 30 - richTextBox1.Left;
+				btn_OpenClose.Text = "<";
+			}
+		}
+
+		private string getRandomTable(List<string> tbls)
+		{
+			string t = tbls[new Random(Environment.TickCount + new Random().Next()).Next(0, tbls.Count)];
+			tbls.Remove(t);
+
+			return t;
+		}
+
+		private string getTableColumns(string table)
+		{
+			string ret = "";
+			List<string> cols = columns[table].Split(',').ToList();
+			int cc = cols.Count;
+			for (int i = 0; i < new Random(Environment.TickCount + 33).Next(2, cc); i++)
+			{
+				Thread.Sleep(1);
+				string r = cols[new Random(Environment.TickCount + 1 + Environment.TickCount / 2).Next(0, cols.Count)];
+				ret += r + ", ";
+				cols.Remove(r);
+			}
+
+			ret = ret.Trim(',',' ');
+
+			return ret;
+		}
+
+		private string generateQuery(int type)
+		{
+			string ret = "";
+
+			List<string> tbls = tables.ToList();
+
+			for (int i = 0; i < new Random().Next(3, 7); i++)
+			{
+				Thread.Sleep(10);
+
+				if (type == 1)
+				{
+					ret += "SELECT * FROM " + getRandomTable(tbls) + "; \r\n";
+				}
+
+				else if (type == 2)
+				{
+					string table = getRandomTable(tbls);
+					ret += "SELECT " + getTableColumns(table) + " FROM " + table + "; \r\n";
+				}
+				else if (type == 3)
+				{
+					string table = getRandomTable(tbls);
+					ret += "SELECT " + getTableColumns(table) + " FROM " + table + "; \r\n";
+				}
+			}
+
+
+
+
+
+
+			return ret;
+		}
+
+		private void btn_CLICK(object sender, EventArgs e)
+		{
+			int t = 0;
+			Int32.TryParse((sender as Button).Tag.ToString(), out t);
+			
+			if(t > 0)
+			{
+				switch (t)
+				{
+					case 1:
+						richTextBox1.Rtf = Properties.Resources.simple_SELECT;
+						richTextBox1.Text += generateQuery(1);
+						break;
+
+
+					case 2:
+						richTextBox1.Rtf = Properties.Resources.specific_SELECT;
+						richTextBox1.Text += generateQuery(2);
+						break;
+
+
+					case 3:
+						richTextBox1.Rtf = Properties.Resources.WHERE_SELECT;
+						richTextBox1.Text += generateQuery(3);
+						break;
+
+
+					case 4:
+						richTextBox1.Rtf = Properties.Resources.LIMIT_ORDER_SELECT;
+						richTextBox1.Text += generateQuery(4);
+						break;
+
+
+					case 5:
+						richTextBox1.Rtf = Properties.Resources.SELECT_SUBSELECT;
+						richTextBox1.Text += generateQuery(5);
+						break;
+
+
+					case 6:
+						richTextBox1.Rtf = Properties.Resources.SELECT_JOIN;
+						richTextBox1.Text += generateQuery(6);
+						break;
+
+
+					case 7:
+						break;
+
+
+					case 8:
+						break;
+
+
+					case 9:
+						break;
+
+
+					case 10:
+						break;
+
+
+					case 11:
+						break;
+
+
+					case 12:
+						break;
+
+
+					case 13:
+						break;
+
+
+					case 14:
+						break;
+
+
+					case 15:
+						break;
+
+
+					default:
+						break;
+				}
+			}
+
 		}
 	}
 }

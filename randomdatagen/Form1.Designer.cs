@@ -39,6 +39,22 @@
 			this.rb_Teacher = new System.Windows.Forms.RadioButton();
 			this.btn_GenTables = new System.Windows.Forms.Button();
 			this.rb_AllData = new System.Windows.Forms.RadioButton();
+			this.btn_OpenClose = new System.Windows.Forms.Button();
+			this.btn_SELECT_Simple = new System.Windows.Forms.Button();
+			this.btn_SELECT_Specific = new System.Windows.Forms.Button();
+			this.btn_SELECT_Where = new System.Windows.Forms.Button();
+			this.btn_SELECT_Limit = new System.Windows.Forms.Button();
+			this.btn_SELECT_SubSelect = new System.Windows.Forms.Button();
+			this.btn_SELECT_Join = new System.Windows.Forms.Button();
+			this.btn_SELECT_Complex = new System.Windows.Forms.Button();
+			this.btn_SELECT_VeryComplex = new System.Windows.Forms.Button();
+			this.btn_INSERT_Simple = new System.Windows.Forms.Button();
+			this.btn_INSERT_Complex = new System.Windows.Forms.Button();
+			this.btn_UPDATE_Simple = new System.Windows.Forms.Button();
+			this.btn_UPDATE_Complex = new System.Windows.Forms.Button();
+			this.btn_Misc = new System.Windows.Forms.Button();
+			this.btn_DELETE_Complex = new System.Windows.Forms.Button();
+			this.btn_DELETE_Simple = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -88,9 +104,10 @@
 			this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.richTextBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.richTextBox1.Location = new System.Drawing.Point(12, 50);
 			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(904, 450);
+			this.richTextBox1.Size = new System.Drawing.Size(730, 450);
 			this.richTextBox1.TabIndex = 3;
 			this.richTextBox1.Text = "";
 			// 
@@ -150,9 +167,9 @@
 			// btn_GenTables
 			// 
 			this.btn_GenTables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_GenTables.Location = new System.Drawing.Point(773, 12);
+			this.btn_GenTables.Location = new System.Drawing.Point(744, 12);
 			this.btn_GenTables.Name = "btn_GenTables";
-			this.btn_GenTables.Size = new System.Drawing.Size(143, 23);
+			this.btn_GenTables.Size = new System.Drawing.Size(106, 23);
 			this.btn_GenTables.TabIndex = 9;
 			this.btn_GenTables.Text = "Generate Tables";
 			this.btn_GenTables.UseVisualStyleBackColor = true;
@@ -168,11 +185,219 @@
 			this.rb_AllData.Text = "All Data";
 			this.rb_AllData.UseVisualStyleBackColor = true;
 			// 
+			// btn_OpenClose
+			// 
+			this.btn_OpenClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_OpenClose.Location = new System.Drawing.Point(856, 12);
+			this.btn_OpenClose.Name = "btn_OpenClose";
+			this.btn_OpenClose.Size = new System.Drawing.Size(60, 23);
+			this.btn_OpenClose.TabIndex = 11;
+			this.btn_OpenClose.Text = "<";
+			this.btn_OpenClose.UseVisualStyleBackColor = true;
+			this.btn_OpenClose.Click += new System.EventHandler(this.btn_OpenClose_Click);
+			// 
+			// btn_SELECT_Simple
+			// 
+			this.btn_SELECT_Simple.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_SELECT_Simple.Location = new System.Drawing.Point(748, 56);
+			this.btn_SELECT_Simple.Name = "btn_SELECT_Simple";
+			this.btn_SELECT_Simple.Size = new System.Drawing.Size(161, 23);
+			this.btn_SELECT_Simple.TabIndex = 12;
+			this.btn_SELECT_Simple.Tag = "1";
+			this.btn_SELECT_Simple.Text = "Simple SELECT";
+			this.btn_SELECT_Simple.UseVisualStyleBackColor = true;
+			this.btn_SELECT_Simple.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_SELECT_Specific
+			// 
+			this.btn_SELECT_Specific.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_SELECT_Specific.Location = new System.Drawing.Point(748, 85);
+			this.btn_SELECT_Specific.Name = "btn_SELECT_Specific";
+			this.btn_SELECT_Specific.Size = new System.Drawing.Size(161, 23);
+			this.btn_SELECT_Specific.TabIndex = 13;
+			this.btn_SELECT_Specific.Tag = "2";
+			this.btn_SELECT_Specific.Text = "SELECT specific columns";
+			this.btn_SELECT_Specific.UseVisualStyleBackColor = true;
+			this.btn_SELECT_Specific.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_SELECT_Where
+			// 
+			this.btn_SELECT_Where.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_SELECT_Where.Location = new System.Drawing.Point(748, 114);
+			this.btn_SELECT_Where.Name = "btn_SELECT_Where";
+			this.btn_SELECT_Where.Size = new System.Drawing.Size(161, 23);
+			this.btn_SELECT_Where.TabIndex = 14;
+			this.btn_SELECT_Where.Tag = "3";
+			this.btn_SELECT_Where.Text = "SELECT and WHERE";
+			this.btn_SELECT_Where.UseVisualStyleBackColor = true;
+			this.btn_SELECT_Where.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_SELECT_Limit
+			// 
+			this.btn_SELECT_Limit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_SELECT_Limit.Location = new System.Drawing.Point(748, 143);
+			this.btn_SELECT_Limit.Name = "btn_SELECT_Limit";
+			this.btn_SELECT_Limit.Size = new System.Drawing.Size(161, 23);
+			this.btn_SELECT_Limit.TabIndex = 15;
+			this.btn_SELECT_Limit.Tag = "4";
+			this.btn_SELECT_Limit.Text = "SELECT and LIMIT";
+			this.btn_SELECT_Limit.UseVisualStyleBackColor = true;
+			this.btn_SELECT_Limit.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_SELECT_SubSelect
+			// 
+			this.btn_SELECT_SubSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_SELECT_SubSelect.Location = new System.Drawing.Point(748, 172);
+			this.btn_SELECT_SubSelect.Name = "btn_SELECT_SubSelect";
+			this.btn_SELECT_SubSelect.Size = new System.Drawing.Size(161, 23);
+			this.btn_SELECT_SubSelect.TabIndex = 16;
+			this.btn_SELECT_SubSelect.Tag = "5";
+			this.btn_SELECT_SubSelect.Text = "SELECT and subSELECT";
+			this.btn_SELECT_SubSelect.UseVisualStyleBackColor = true;
+			this.btn_SELECT_SubSelect.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_SELECT_Join
+			// 
+			this.btn_SELECT_Join.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_SELECT_Join.Location = new System.Drawing.Point(748, 201);
+			this.btn_SELECT_Join.Name = "btn_SELECT_Join";
+			this.btn_SELECT_Join.Size = new System.Drawing.Size(161, 23);
+			this.btn_SELECT_Join.TabIndex = 17;
+			this.btn_SELECT_Join.Tag = "6";
+			this.btn_SELECT_Join.Text = "SELECT and JOIN";
+			this.btn_SELECT_Join.UseVisualStyleBackColor = true;
+			this.btn_SELECT_Join.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_SELECT_Complex
+			// 
+			this.btn_SELECT_Complex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_SELECT_Complex.Location = new System.Drawing.Point(748, 230);
+			this.btn_SELECT_Complex.Name = "btn_SELECT_Complex";
+			this.btn_SELECT_Complex.Size = new System.Drawing.Size(161, 23);
+			this.btn_SELECT_Complex.TabIndex = 18;
+			this.btn_SELECT_Complex.Tag = "7";
+			this.btn_SELECT_Complex.Text = "Complex SELECT";
+			this.btn_SELECT_Complex.UseVisualStyleBackColor = true;
+			this.btn_SELECT_Complex.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_SELECT_VeryComplex
+			// 
+			this.btn_SELECT_VeryComplex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_SELECT_VeryComplex.Location = new System.Drawing.Point(748, 259);
+			this.btn_SELECT_VeryComplex.Name = "btn_SELECT_VeryComplex";
+			this.btn_SELECT_VeryComplex.Size = new System.Drawing.Size(161, 23);
+			this.btn_SELECT_VeryComplex.TabIndex = 19;
+			this.btn_SELECT_VeryComplex.Tag = "8";
+			this.btn_SELECT_VeryComplex.Text = "Very complex SELECT";
+			this.btn_SELECT_VeryComplex.UseVisualStyleBackColor = true;
+			this.btn_SELECT_VeryComplex.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_INSERT_Simple
+			// 
+			this.btn_INSERT_Simple.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_INSERT_Simple.Location = new System.Drawing.Point(748, 288);
+			this.btn_INSERT_Simple.Name = "btn_INSERT_Simple";
+			this.btn_INSERT_Simple.Size = new System.Drawing.Size(161, 23);
+			this.btn_INSERT_Simple.TabIndex = 20;
+			this.btn_INSERT_Simple.Tag = "9";
+			this.btn_INSERT_Simple.Text = "Simple INSERT";
+			this.btn_INSERT_Simple.UseVisualStyleBackColor = true;
+			this.btn_INSERT_Simple.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_INSERT_Complex
+			// 
+			this.btn_INSERT_Complex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_INSERT_Complex.Location = new System.Drawing.Point(748, 317);
+			this.btn_INSERT_Complex.Name = "btn_INSERT_Complex";
+			this.btn_INSERT_Complex.Size = new System.Drawing.Size(161, 23);
+			this.btn_INSERT_Complex.TabIndex = 21;
+			this.btn_INSERT_Complex.Tag = "10";
+			this.btn_INSERT_Complex.Text = "Complex INSERT";
+			this.btn_INSERT_Complex.UseVisualStyleBackColor = true;
+			this.btn_INSERT_Complex.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_UPDATE_Simple
+			// 
+			this.btn_UPDATE_Simple.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_UPDATE_Simple.Location = new System.Drawing.Point(748, 346);
+			this.btn_UPDATE_Simple.Name = "btn_UPDATE_Simple";
+			this.btn_UPDATE_Simple.Size = new System.Drawing.Size(161, 23);
+			this.btn_UPDATE_Simple.TabIndex = 22;
+			this.btn_UPDATE_Simple.Tag = "11";
+			this.btn_UPDATE_Simple.Text = "Simple UPDATE";
+			this.btn_UPDATE_Simple.UseVisualStyleBackColor = true;
+			this.btn_UPDATE_Simple.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_UPDATE_Complex
+			// 
+			this.btn_UPDATE_Complex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_UPDATE_Complex.Location = new System.Drawing.Point(748, 375);
+			this.btn_UPDATE_Complex.Name = "btn_UPDATE_Complex";
+			this.btn_UPDATE_Complex.Size = new System.Drawing.Size(161, 23);
+			this.btn_UPDATE_Complex.TabIndex = 23;
+			this.btn_UPDATE_Complex.Tag = "12";
+			this.btn_UPDATE_Complex.Text = "Complex UPDATE";
+			this.btn_UPDATE_Complex.UseVisualStyleBackColor = true;
+			this.btn_UPDATE_Complex.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_Misc
+			// 
+			this.btn_Misc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_Misc.Location = new System.Drawing.Point(748, 462);
+			this.btn_Misc.Name = "btn_Misc";
+			this.btn_Misc.Size = new System.Drawing.Size(161, 23);
+			this.btn_Misc.TabIndex = 26;
+			this.btn_Misc.Tag = "15";
+			this.btn_Misc.Text = "Misc";
+			this.btn_Misc.UseVisualStyleBackColor = true;
+			this.btn_Misc.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_DELETE_Complex
+			// 
+			this.btn_DELETE_Complex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_DELETE_Complex.Location = new System.Drawing.Point(748, 433);
+			this.btn_DELETE_Complex.Name = "btn_DELETE_Complex";
+			this.btn_DELETE_Complex.Size = new System.Drawing.Size(161, 23);
+			this.btn_DELETE_Complex.TabIndex = 25;
+			this.btn_DELETE_Complex.Tag = "14";
+			this.btn_DELETE_Complex.Text = "Complex DELETE";
+			this.btn_DELETE_Complex.UseVisualStyleBackColor = true;
+			this.btn_DELETE_Complex.Click += new System.EventHandler(this.btn_CLICK);
+			// 
+			// btn_DELETE_Simple
+			// 
+			this.btn_DELETE_Simple.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_DELETE_Simple.Location = new System.Drawing.Point(748, 404);
+			this.btn_DELETE_Simple.Name = "btn_DELETE_Simple";
+			this.btn_DELETE_Simple.Size = new System.Drawing.Size(161, 23);
+			this.btn_DELETE_Simple.TabIndex = 24;
+			this.btn_DELETE_Simple.Tag = "13";
+			this.btn_DELETE_Simple.Text = "Simple DELETE";
+			this.btn_DELETE_Simple.UseVisualStyleBackColor = true;
+			this.btn_DELETE_Simple.Click += new System.EventHandler(this.btn_CLICK);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(928, 546);
+			this.Controls.Add(this.richTextBox1);
+			this.Controls.Add(this.btn_Misc);
+			this.Controls.Add(this.btn_DELETE_Complex);
+			this.Controls.Add(this.btn_DELETE_Simple);
+			this.Controls.Add(this.btn_UPDATE_Complex);
+			this.Controls.Add(this.btn_UPDATE_Simple);
+			this.Controls.Add(this.btn_INSERT_Complex);
+			this.Controls.Add(this.btn_INSERT_Simple);
+			this.Controls.Add(this.btn_SELECT_VeryComplex);
+			this.Controls.Add(this.btn_SELECT_Complex);
+			this.Controls.Add(this.btn_SELECT_Join);
+			this.Controls.Add(this.btn_SELECT_SubSelect);
+			this.Controls.Add(this.btn_SELECT_Limit);
+			this.Controls.Add(this.btn_SELECT_Where);
+			this.Controls.Add(this.btn_SELECT_Specific);
+			this.Controls.Add(this.btn_SELECT_Simple);
+			this.Controls.Add(this.btn_OpenClose);
 			this.Controls.Add(this.rb_AllData);
 			this.Controls.Add(this.btn_GenTables);
 			this.Controls.Add(this.rb_Teacher);
@@ -180,7 +405,6 @@
 			this.Controls.Add(this.lbl_info);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.button2);
-			this.Controls.Add(this.richTextBox1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.numericUpDown1);
 			this.Controls.Add(this.button1);
@@ -205,6 +429,22 @@
 		private System.Windows.Forms.RadioButton rb_Teacher;
 		private System.Windows.Forms.Button btn_GenTables;
 		private System.Windows.Forms.RadioButton rb_AllData;
+		private System.Windows.Forms.Button btn_OpenClose;
+		private System.Windows.Forms.Button btn_SELECT_Simple;
+		private System.Windows.Forms.Button btn_SELECT_Specific;
+		private System.Windows.Forms.Button btn_SELECT_Where;
+		private System.Windows.Forms.Button btn_SELECT_Limit;
+		private System.Windows.Forms.Button btn_SELECT_SubSelect;
+		private System.Windows.Forms.Button btn_SELECT_Join;
+		private System.Windows.Forms.Button btn_SELECT_Complex;
+		private System.Windows.Forms.Button btn_SELECT_VeryComplex;
+		private System.Windows.Forms.Button btn_INSERT_Simple;
+		private System.Windows.Forms.Button btn_INSERT_Complex;
+		private System.Windows.Forms.Button btn_UPDATE_Simple;
+		private System.Windows.Forms.Button btn_UPDATE_Complex;
+		private System.Windows.Forms.Button btn_Misc;
+		private System.Windows.Forms.Button btn_DELETE_Complex;
+		private System.Windows.Forms.Button btn_DELETE_Simple;
 	}
 }
 
